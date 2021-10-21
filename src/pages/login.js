@@ -1,5 +1,14 @@
+import Navbar from "../components/navbar";
+
+import links from "../resources/links";
+
 function Login() {
-  return <h2>Login</h2>;
+  return (
+    <>
+      <Navbar links={[links.register]} />
+      <h2>Login</h2>
+    </>
+  );
 }
 
 export default Login;

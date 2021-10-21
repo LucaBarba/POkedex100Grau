@@ -1,14 +1,13 @@
 import Navbar from "../components/navbar";
-
 import links from "../resources/links";
 
-function Main() {
+function Register() {
   return (
     <>
-      <Navbar links={[links.register, links.login]} />
-      <h2>Main</h2>
+      <Navbar links={[links.login]} />
+      <h2>Register</h2>
     </>
   );
 }
 
-export default Main;
+export default Register;

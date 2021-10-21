@@ -1,18 +1,21 @@
 import "./App.css";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import Navbar from "./components/navbar";
-
 import Login from "./pages/login";
 import Main from "./pages/main";
+import Register from "./pages/register";
+
+import links from "./resources/links";
 
 function App() {
   return (
     <Router>
-      <Navbar />
       <Switch>
-        <Route path="/login">
+        <Route path={links.login.path}>
           <Login />
+        </Route>
+        <Route path={links.register.path}>
+          <Register />
         </Route>
         <Route path="/">
           <Main />

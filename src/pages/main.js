@@ -7,18 +7,12 @@ import links from "../resources/links";
 import UserContext from "../contexts/userContext";
 
 function Main() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   let navLinks = [links.register, links.login];
 
   if (user != null) {
-    const linkLogout = links.logout;
-    linkLogout.onClick = (e) => {
-      e.preventDefault();
-      setUser(null);
-    };
-
-    navLinks = [links.profile, linkLogout];
+    navLinks = [links.profile, links.logout];
   }
 
   return (

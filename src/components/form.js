@@ -57,7 +57,7 @@ function Form(props) {
       <FormStyled>
         <Title>{title}</Title>
         <TextInput>
-          <Label for="inputName">Nome do usuário</Label>
+          <Label htmlFor="inputName">Nome do usuário</Label>
           <input
             type="text"
             name="inputName"

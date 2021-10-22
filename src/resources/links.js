@@ -1,5 +1,5 @@
-function genLink(name, path) {
-  return { name: name, path: path };
+function genLink(name, path, onClickFunction) {
+  return { name: name, path: path, onClick: onClickFunction };
 }
 
 const links = {
@@ -7,6 +7,7 @@ const links = {
   register: genLink("Cadastrar", "/register"),
   profile: genLink("Perfil", "/profile"),
   main: genLink("Página inicial", "/"),
+  logout: genLink("Sair", "/"),
 };
 
 export default links;

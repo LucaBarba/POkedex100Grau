@@ -46,7 +46,7 @@ function Navbar(props) {
       </Link>
       <NavLinksDiv>
         {props.links?.map((el) => (
-          <LinkDiv onClick={el?.onClick}>
+          <LinkDiv key={el.key} onClick={el?.onClick}>
             <LinkStyled to={el.path}>{el.name}</LinkStyled>
           </LinkDiv>
         ))}

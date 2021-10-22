@@ -1,5 +1,8 @@
+let nextKey = -1;
+
 function genLink(name, path, onClickFunction) {
-  return { name: name, path: path, onClick: onClickFunction };
+  nextKey += 1;
+  return { name: name, path: path, onClick: onClickFunction, key: nextKey };
 }
 
 const links = {

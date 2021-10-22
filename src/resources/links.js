@@ -1,8 +1,16 @@
 let nextKey = -1;
 
-function genLink(name, path, onClickFunction) {
+function genLink(name, path, pathWithParams) {
   nextKey += 1;
-  return { name: name, path: path, onClick: onClickFunction, key: nextKey };
+  const link = {
+    name: name,
+    path: path,
+    pathWithParams: pathWithParams,
+    onClick: null,
+    key: nextKey,
+  };
+
+  return link;
 }
 
 const links = {
@@ -11,6 +19,7 @@ const links = {
   profile: genLink("Perfil", "/profile"),
   main: genLink("Página inicial", "/"),
   logout: genLink("Sair", "/"),
+  pokemon: genLink("", "/pokemon", "/pokemon/:pokemon_name"),
 };
 
 export default links;

@@ -5,6 +5,7 @@ import Main from "./pages/main";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Profile from "./pages/profile";
+import Pokemon from "./pages/pokemon";
 
 import links from "./resources/links";
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path={links.profile.path}>
             <Profile />
+          </Route>
+          <Route path={links.pokemon.pathWithParams}>
+            <Pokemon />
           </Route>
           <Route path="/">
             <Main />

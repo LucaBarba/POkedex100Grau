@@ -12,6 +12,8 @@ import api from "../resources/api";
 
 import ListaDePokemons from "../components/ListaDePokemons";
 
+import { Buttons } from "../styles/button";
+
 function Main() {
   const MIN_PAGE = 1;
   const MAX_PAGE = 33;
@@ -51,12 +53,22 @@ function Main() {
       <h2>Main{user ? " logado" : ""}</h2>
 
       <ListaDePokemons array={pokemonArray} />
-      <button disabled={page === MIN_PAGE} onClick={() => buttonHandler(-1)}>
-        Prev
-      </button>
-      <button disabled={page === MAX_PAGE} onClick={() => buttonHandler(+1)}>
-        Next
-      </button>
+      <Buttons>
+        <button
+          style={{ width: "50%", height: "50px" }}
+          disabled={page === MIN_PAGE}
+          onClick={() => buttonHandler(-1)}
+        >
+          Prev
+        </button>
+        <button
+          style={{ width: "50%", height: "50px" }}
+          disabled={page === MAX_PAGE}
+          onClick={() => buttonHandler(+1)}
+        >
+          Next
+        </button>
+      </Buttons>
     </>
   );
 }

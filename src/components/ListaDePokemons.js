@@ -11,8 +11,6 @@ function ListaDePokemons({ array }) {
 
     let isFavorite = false;
 
-    // console.log(user);
-
     let indexFavorites = 0;
     for (
       indexFavorites = 0;
@@ -29,9 +27,6 @@ function ListaDePokemons({ array }) {
       api
         .post(`/users/${user.username}/starred/${pokemon.name}`)
         .then((res) => {
-          // console.log(res)
-          // user.favorites.push(pokemon.name)
-
           let newUser = { ...user };
           console.log(newUser);
 
@@ -57,9 +52,21 @@ function ListaDePokemons({ array }) {
         setUser(newUser);
       });
     }
+  }
 
-    // console.log(user)
-    // console.log(pokemon)
+  function verifyFavorite(pokemon) {
+    let i = 0;
+    let isFavorite = false;
+    for (i = 0; i < user.favorites.length; i++) {
+      if (user.favorites[i].name === pokemon.name) {
+        isFavorite = true;
+        break;
+      }
+    }
+    if (!isFavorite) {
+      return <>Favoritar</>;
+    }
+    return <>Desfavoritar</>;
   }
 
   return (
@@ -77,13 +84,9 @@ function ListaDePokemons({ array }) {
           <button
             onClick={() => {
               FavoritaPokemons(pokemon);
-
-              // console.log(user)
-              // console.log(pokemon.name)
-              // console.log("\n")
             }}
           >
-            Favoritar
+            {verifyFavorite(pokemon)}
           </button>
         </Card>
       ))}

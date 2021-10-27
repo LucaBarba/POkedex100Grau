@@ -57,10 +57,13 @@ function ListaDePokemons({ array }) {
   function verifyFavorite(pokemon) {
     let i = 0;
     let isFavorite = false;
-    for (i = 0; i < user.favorites.length; i++) {
-      if (user.favorites[i].name === pokemon.name) {
-        isFavorite = true;
-        break;
+
+    if (user != null) {
+      for (i = 0; i < user.favorites.length; i++) {
+        if (user.favorites[i].name === pokemon.name) {
+          isFavorite = true;
+          break;
+        }
       }
     }
     if (!isFavorite) {

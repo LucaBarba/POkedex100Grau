@@ -10,20 +10,7 @@ function formatPokemon(module){
 
 }
 
-function getAllPokemon(){           // formato: GET https://pokedex20201.herokuapp.com/pokemons?page=2
 
-    // busca pagina de pokemons
-
-    // testando inicialmente para a pagina 1
-    let elemento = api.get("/pokemons?page=1").map(()=>{
-
-        
-
-    })
-
-    // console.log(elemento)
-
-}
 
 function getPokemonByName(name){        // formato: GET https://pokedex20201.herokuapp.com/pokemons/bulbasaur
 

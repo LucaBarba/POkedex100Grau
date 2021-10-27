@@ -13,20 +13,10 @@ import api from "../resources/api";
 import ListaDePokemons from "../components/ListaDePokemons";
 
 function Main() {
+  const MIN_PAGE = 1;
+  const MAX_PAGE = 33;
+
   const { user } = useContext(UserContext);
-  // let logged = true
-
-  let logged = false;
-  let usuario = "inicializa";
-  if (user === null) {
-    console.log("nulo!");
-    usuario = "No Login";
-  } else {
-    logged = true;
-    usuario = user;
-  }
-
-  // console.log(user)
 
   let navLinks = [links.register, links.login];
 
@@ -35,19 +25,38 @@ function Main() {
   }
 
   const [pokemonArray, setPokemonArray] = useState([]);
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    api.get("/pokemons").then((response) => {
+    console.log(page);
+    api.get(`/pokemons?page=${page}`).then((response) => {
       setPokemonArray(response.data.data);
     });
-  }, []);
-  // console.log(pokemonArray)
+  }, [page]);
+
+  function buttonHandler(delta) {
+    let nextPage = page + delta;
+
+    if (nextPage < MIN_PAGE) {
+      nextPage = MIN_PAGE;
+    } else if (nextPage > MAX_PAGE) {
+      nextPage = MAX_PAGE;
+    }
+
+    setPage(nextPage);
+  }
 
   return (
     <>
       <Navbar links={navLinks} />
       <h2>Main{user ? " logado" : ""}</h2>
 
-      <ListaDePokemons array={pokemonArray} user={usuario} logged={logged} />
+      <ListaDePokemons array={pokemonArray} />
+      <button disabled={page === MIN_PAGE} onClick={() => buttonHandler(-1)}>
+        Prev
+      </button>
+      <button disabled={page === MAX_PAGE} onClick={() => buttonHandler(+1)}>
+        Next
+      </button>
     </>
   );
 }

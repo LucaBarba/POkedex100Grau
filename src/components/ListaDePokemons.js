@@ -64,15 +64,15 @@ function ListaDePokemons({ array }) {
 
   return (
     <CardList>
-      {array.map((pokemon) => (
-        <Card>
-          <img src={pokemon.image_url} />
-          <ul style={{ listStyleType: "none" }}>
-            <li>Nome: {pokemon.name}</li>
-            <li> Tipo(s): {pokemon.kind}</li>
-            <li>Peso: {pokemon.weight}</li>
-            <li>Id: {pokemon.id}</li>
-          </ul>
+      {array.map((pokemon, index) => (
+        <Card key={index}>
+          <img src={pokemon.image_url} alt={pokemon.name + " image"} />
+          <div style={{ listStyleType: "none" }}>
+            <div>Nome: {pokemon.name}</div>
+            <div> Tipo(s): {pokemon.kind}</div>
+            <div>Peso: {pokemon.weight}</div>
+            <div>Id: {pokemon.id}</div>
+          </div>
 
           <button
             onClick={() => {

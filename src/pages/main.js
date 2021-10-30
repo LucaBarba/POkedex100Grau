@@ -49,7 +49,6 @@ function Main() {
   return (
     <>
       <Navbar links={navLinks} />
-      <h2>Main{user ? " logado" : ""}</h2>
 
       <PokemonList array={pokemonArray} />
       <Buttons>

@@ -63,6 +63,7 @@ function Form(props) {
             name="inputName"
             id="inputName"
             value={text}
+            autoFocus
             onChange={(e) => setText(e.target.value)}
           ></input>
         </TextInput>

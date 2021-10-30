@@ -19,7 +19,6 @@ function Profile() {
   return (
     <>
       <Navbar links={[links.profile, links.logout]} />
-      <h1>Profile</h1>
 
       <PokemonList array={user.favorites} />
     </>

@@ -21,10 +21,7 @@ const useUser = () => {
       setProfileText(u);
 
       setUser(u);
-    } catch (error) {
-      console.log("Can't save user in local storage");
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

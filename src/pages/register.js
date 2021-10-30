@@ -24,9 +24,8 @@ function Register() {
         setUser(newUser);
       })
       .catch((error) => {
-        console.log(error);
         setName("");
-        console.log("Failed");
+        console.error("Failed to register");
       });
   }
 

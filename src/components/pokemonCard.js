@@ -3,7 +3,7 @@ import api from "../resources/api";
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
 
-import { Card } from "../styles/cards";
+import { Card } from "../styles/pokemonList";
 
 function PokemonCard({ pokemon }) {
   const { user, setUser } = useContext(UserContext);
@@ -11,11 +11,8 @@ function PokemonCard({ pokemon }) {
   return (
     <Card key={pokemon.id}>
       <img src={pokemon.image_url} alt={pokemon.name + " image"} />
-      <div style={{ listStyleType: "none" }}>
-        <div>Nome: {pokemon.name}</div>
-        <div> Tipo(s): {pokemon.kind}</div>
-        <div>Peso: {pokemon.weight}</div>
-        <div>Id: {pokemon.id}</div>
+      <div>
+        <div>{capitalizeName(pokemon.name)}</div>
       </div>
 
       <button
@@ -28,6 +25,10 @@ function PokemonCard({ pokemon }) {
       </button>
     </Card>
   );
+}
+
+function capitalizeName(name) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 function verifyFavorite(user, pokemon) {

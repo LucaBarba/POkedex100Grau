@@ -8,14 +8,7 @@ import UserContext from "../contexts/userContext";
 
 import api from "../resources/api";
 
-// import {Card, CardList} from "../styles/cards"
-
 import PokemonList from "../components/pokemonList";
-
-import { Buttons } from "../styles/button";
-
-const MIN_PAGE = 1;
-const MAX_PAGE = 33;
 
 function Main() {
   const { user } = useContext(UserContext);
@@ -23,23 +16,10 @@ function Main() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    console.log(page);
     api.get(`/pokemons?page=${page}`).then((response) => {
       setPokemonArray(response.data.data);
     });
   }, [page]);
-
-  function buttonHandler(delta) {
-    let nextPage = page + delta;
-
-    if (nextPage < MIN_PAGE) {
-      nextPage = MIN_PAGE;
-    } else if (nextPage > MAX_PAGE) {
-      nextPage = MAX_PAGE;
-    }
-
-    setPage(nextPage);
-  }
 
   let navLinks = [links.register, links.login];
   if (user != null) {
@@ -50,23 +30,12 @@ function Main() {
     <>
       <Navbar links={navLinks} />
 
-      <PokemonList array={pokemonArray} />
-      <Buttons>
-        <button
-          style={{ width: "50%", height: "50px" }}
-          disabled={page === MIN_PAGE}
-          onClick={() => buttonHandler(-1)}
-        >
-          Prev
-        </button>
-        <button
-          style={{ width: "50%", height: "50px" }}
-          disabled={page === MAX_PAGE}
-          onClick={() => buttonHandler(+1)}
-        >
-          Next
-        </button>
-      </Buttons>
+      <PokemonList
+        array={pokemonArray}
+        pageLimits={{ lower: 1, upper: 33 }}
+        page={page}
+        setPage={setPage}
+      />
     </>
   );
 }

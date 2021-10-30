@@ -9,13 +9,13 @@ function PokemonCard({ pokemon }) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <Card>
+    <Card className={pokemon.kind.split(";")[0]}>
       <img src={pokemon.image_url} alt={pokemon.name + " image"} />
       <Name>{capitalizeName(pokemon.name)}</Name>
 
       <FavButton
         className={
-          favoritePosition(user, pokemon) !== -1 ? "icon-favorited" : ""
+          favoritePosition(user, pokemon) !== -1 ? " icon-favorited" : ""
         }
         disabled={user === null}
         onClick={(event) => {

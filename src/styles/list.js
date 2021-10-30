@@ -5,6 +5,8 @@ export const PokemonListDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   min-height: 91vh;
+
+  background-color: var(--bg);
 `;
 
 export const CardList = styled.div`
@@ -25,6 +27,8 @@ export const Button = styled.button`
 
   font-size: 1.5rem;
   text-align: center;
+  font-weight: bold;
+  color: white;
 
   cursor: pointer;
 
@@ -32,10 +36,19 @@ export const Button = styled.button`
 
   background: linear-gradient(
     180deg,
+    var(--bg),
+    #444 30%,
+    #666 50%,
+    #444 70%,
+    var(--bg)
+  );
+`;
+
+/*background: linear-gradient(
+    180deg,
     #cecece,
     #60c060 15%,
     #408040 50%,
     #60c060 85%,
     #cecece
-  );
-`;
+  );*/

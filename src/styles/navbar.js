@@ -4,16 +4,18 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
   height: 9vh;
+
   display: flex;
+
   justify-content: space-between;
-  background: linear-gradient(180deg, #fff, #cecece 20%, #aeaeae 80%, #cecece);
+  align-items: center;
+
+  background: linear-gradient(180deg, #777, var(--bg));
 `;
 
 export const Img = styled.img`
-  height: 4rem;
-  margin-left: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  height: 3.5rem;
+  margin-left: 1.3rem;
 `;
 
 export const NavLinksDiv = styled.div`
@@ -37,5 +39,5 @@ export const NavLinkStyled = styled(NavLink)`
   vertical-align: baseline;
   text-decoration: none;
   font-weight: bold;
-  color: black;
+  color: #eeeeee;
 `;

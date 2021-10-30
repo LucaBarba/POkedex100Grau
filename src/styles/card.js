@@ -3,10 +3,10 @@ import styled from "styled-components";
 import star_off from "../assets/star_off.png";
 
 export const Card = styled.div`
-  flex-basis: 220px;
+  flex-basis: 180px;
   flex-shrink: 1;
 
-  margin: 2px;
+  margin: 22px;
   padding: 10px;
 
   display: flex;
@@ -14,9 +14,9 @@ export const Card = styled.div`
 
   justify-content: center;
 
-  background-color: #7eca35;
-  border: 2px solid black;
   border-radius: 5px;
+
+  box-shadow: 3px 3px black;
 `;
 
 export const Name = styled.div`
@@ -34,4 +34,5 @@ export const FavButton = styled.button`
   cursor: pointer;
 
   background: no-repeat center/100% url(${star_off});
+  filter: invert(18.75%);
 `;

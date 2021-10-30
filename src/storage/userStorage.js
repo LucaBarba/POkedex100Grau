@@ -17,10 +17,10 @@ const useUser = () => {
     try {
       localStorage.setItem("user@pokedex", JSON.stringify(u));
 
-      setUser(u);
-
       // Quando usuário é atualizado, atualiza o link para o perfil
       setProfileText(u);
+
+      setUser(u);
     } catch (error) {
       console.log("Can't save user in local storage");
       console.error(error);

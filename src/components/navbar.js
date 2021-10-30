@@ -1,18 +1,20 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import links from "../resources/links";
 
 const Nav = styled.nav`
-  height: 4rem;
+  height: auto;
   display: flex;
   justify-content: space-between;
+  background: linear-gradient(180deg, #fff, #cecece 20%, #aeaeae 80%, #cecece);
 `;
 
 const Img = styled.img`
-  height: 100%;
+  height: 4rem;
   margin-left: 5px;
   margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 const NavLinksDiv = styled.div`
@@ -23,17 +25,20 @@ const NavLinksDiv = styled.div`
 `;
 
 const LinkDiv = styled.div`
-  height: 100%;
+  height: auto;
   width: 5rem;
   display: flex;
   align-items: center;
 `;
 
-const LinkStyled = styled(Link)`
+const NavLinkStyled = styled(NavLink)`
   height: 100%;
   width: 5rem;
-  text-decorations: none;
   text-align: center;
+  vertical-align: baseline;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
 `;
 
 function Navbar(props) {
@@ -47,7 +52,12 @@ function Navbar(props) {
       <NavLinksDiv>
         {props.links?.map((el) => (
           <LinkDiv key={el.key} onClick={el?.onClick}>
-            <LinkStyled to={el.path}>{el.name}</LinkStyled>
+            <NavLinkStyled
+              activeClassName={el.path == links.logout.path ? "" : "disabled"}
+              to={el.path}
+            >
+              {el.name}
+            </NavLinkStyled>
           </LinkDiv>
         ))}
       </NavLinksDiv>

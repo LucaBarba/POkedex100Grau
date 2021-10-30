@@ -10,7 +10,7 @@ import api from "../resources/api";
 
 // import {Card, CardList} from "../styles/cards"
 
-import ListaDePokemons from "../components/ListaDePokemons";
+import PokemonList from "../components/pokemonList";
 
 import { Buttons } from "../styles/button";
 
@@ -51,7 +51,7 @@ function Main() {
       <Navbar links={navLinks} />
       <h2>Main{user ? " logado" : ""}</h2>
 
-      <ListaDePokemons array={pokemonArray} />
+      <PokemonList array={pokemonArray} />
       <Buttons>
         <button
           style={{ width: "50%", height: "50px" }}

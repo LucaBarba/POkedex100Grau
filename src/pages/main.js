@@ -14,20 +14,14 @@ import ListaDePokemons from "../components/ListaDePokemons";
 
 import { Buttons } from "../styles/button";
 
+const MIN_PAGE = 1;
+const MAX_PAGE = 33;
+
 function Main() {
-  const MIN_PAGE = 1;
-  const MAX_PAGE = 33;
-
   const { user } = useContext(UserContext);
-
-  let navLinks = [links.register, links.login];
-
-  if (user != null) {
-    navLinks = [links.profile, links.logout];
-  }
-
   const [pokemonArray, setPokemonArray] = useState([]);
   const [page, setPage] = useState(1);
+
   useEffect(() => {
     console.log(page);
     api.get(`/pokemons?page=${page}`).then((response) => {
@@ -45,6 +39,11 @@ function Main() {
     }
 
     setPage(nextPage);
+  }
+
+  let navLinks = [links.register, links.login];
+  if (user != null) {
+    navLinks = [links.profile, links.logout];
   }
 
   return (

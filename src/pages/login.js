@@ -14,12 +14,12 @@ import { Redirect } from "react-router";
 function Login() {
   const { user, setUser } = useContext(UserContext);
 
-  function handleSubmit(e, name, setName) {
+  function handleSubmit(e, formName, setFormText) {
     e.preventDefault();
+
     api
-      .get(`/users/${name}`)
+      .get(`/users/${formName}`)
       .then((res) => {
-        console.log(res);
         const curUser = User(
           res.data.user.id,
           res.data.user.username,
@@ -29,9 +29,7 @@ function Login() {
         setUser(curUser);
       })
       .catch((error) => {
-        console.log(error);
-        setName("");
-        console.log("Failed");
+        setFormText("");
       });
   }
 

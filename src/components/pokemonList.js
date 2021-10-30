@@ -1,4 +1,4 @@
-import { PokemonListDiv, Button, CardList } from "../styles/pokemonList";
+import { PokemonListDiv, Button, CardList } from "../styles/list";
 
 import PokemonCard from "./pokemonCard";
 
@@ -27,7 +27,7 @@ function PokemonList({ array, pageLimits, page, setPage }) {
   return (
     <PokemonListDiv>
       <Button
-        className={leftDisabled ? "page-nav-disabled" : ""}
+        className={leftDisabled ? "disabled page-grey" : ""}
         disabled={leftDisabled}
         onClick={() => buttonHandler(-1)}
       >
@@ -39,7 +39,7 @@ function PokemonList({ array, pageLimits, page, setPage }) {
         ))}
       </CardList>
       <Button
-        className={rightDisable ? "page-nav-disabled" : ""}
+        className={rightDisable ? "disabled page-grey" : ""}
         disabled={rightDisable}
         onClick={() => buttonHandler(+1)}
       >

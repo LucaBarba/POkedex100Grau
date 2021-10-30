@@ -1,8 +1,71 @@
 .disabled {
   pointer-events: none;
+}
+
+.grey {
   color: grey !important;
 }
 
-.page-nav-disabled {
-  background-color: grey !important;
+.page-grey {
+  background: linear-gradient(180deg, #cecece, #aeaeae 50%, #cecece) !important;
+}
+
+.icon-favorited {
+  background: no-repeat center/100% url(./assets/star_on.png) !important;
+}
+
+.loading {
+  background: no-repeat center/100% url(./assets/loading.gif) !important;
+}
+
+.bug {
+  background-color: #7ed578;
+}
+.electric {
+  background-color: #fff34b;
+}
+.fairy {
+  background-color: #ff7ee5;
+}
+.fighting {
+  background-color: #f17373;
+}
+.fire {
+  background-color: #ffb433;
+}
+.flying {
+  background-color: #d7f1e9;
+}
+.ghost {
+  background-color: #e2e2e2;
+}
+.grass {
+  background-color: #5eff53;
+}
+.ground {
+  background-color: #aa8546;
+}
+.ice {
+  background-color: #aee3fb;
+}
+.normal {
+  background-color: #d7dba8;
+}
+.poison {
+  background-color: #ce52f9;
+}
+.psychic {
+  background-color: #ffc157;
+}
+.rock {
+  background-color: #757575;
+}
+.steel {
+  background-color: #a1a1a1;
+}
+.water {
+  background-color: #7192ff;
+}
+.dragon {
+  background-color: #43372d;
 }

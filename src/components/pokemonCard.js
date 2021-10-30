@@ -3,7 +3,7 @@ import api from "../resources/api";
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
 
-import { Card, Name, FavButton } from "../styles/pokemonList";
+import { Card, Name, FavButton } from "../styles/card";
 
 function PokemonCard({ pokemon }) {
   const { user, setUser } = useContext(UserContext);
@@ -14,13 +14,14 @@ function PokemonCard({ pokemon }) {
       <Name>{capitalizeName(pokemon.name)}</Name>
 
       <FavButton
+        className={
+          favoritePosition(user, pokemon) !== -1 ? "icon-favorited" : ""
+        }
         disabled={user === null}
-        onClick={() => {
-          handleFavoriteButton(user, setUser, pokemon);
+        onClick={(event) => {
+          handleFavoriteButton(event, user, setUser, pokemon);
         }}
-      >
-        {verifyFavorite(user, pokemon) ? "D" : "F"}
-      </FavButton>
+      />
     </Card>
   );
 }
@@ -29,9 +30,9 @@ function capitalizeName(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
-function verifyFavorite(user, pokemon) {
+function favoritePosition(user, pokemon) {
   if (user == null) {
-    return false;
+    return -1;
   }
 
   let i = 0;
@@ -39,50 +40,48 @@ function verifyFavorite(user, pokemon) {
   if (user != null) {
     for (i = 0; i < user.favorites.length; i++) {
       if (user.favorites[i].name === pokemon.name) {
-        return true;
+        return i;
       }
     }
   }
 
-  return false;
+  return -1;
 }
 
-function handleFavoriteButton(user, setUser, pokemon) {
+function handleFavoriteButton(event, user, setUser, pokemon) {
   if (user === null) return;
 
-  let isFavorite = false;
+  event.target.classList.add("disabled", "loading");
 
-  let indexFavorites = 0;
-  for (
-    indexFavorites = 0;
-    indexFavorites < user.favorites.length;
-    indexFavorites++
-  ) {
-    if (user.favorites[indexFavorites].name === pokemon.name) {
-      isFavorite = true;
-      break;
-    }
-  }
+  const favPosition = favoritePosition(user, pokemon);
 
-  if (!isFavorite) {
-    api.post(`/users/${user.username}/starred/${pokemon.name}`).then((_res) => {
-      let newUser = { ...user };
-
-      newUser.favorites = user.favorites.slice(0);
-      newUser.favorites.push(pokemon);
-
-      setUser(newUser);
-    });
-  } else {
+  if (favPosition !== -1) {
     api
       .delete(`/users/${user.username}/starred/${pokemon.name}`)
       .then((_res) => {
         let newUser = { ...user };
 
         newUser.favorites = user.favorites.slice(0);
-        newUser.favorites.splice(indexFavorites, 1);
+        newUser.favorites.splice(favPosition, 1);
 
         setUser(newUser);
+      })
+      .finally(() => {
+        event.target.classList.remove("disabled", "loading");
+      });
+  } else {
+    api
+      .post(`/users/${user.username}/starred/${pokemon.name}`)
+      .then((_res) => {
+        let newUser = { ...user };
+
+        newUser.favorites = user.favorites.slice(0);
+        newUser.favorites.push(pokemon);
+
+        setUser(newUser);
+      })
+      .finally(() => {
+        event.target.classList.remove("disabled", "loading");
       });
   }
 }

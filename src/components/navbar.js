@@ -1,45 +1,14 @@
-import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import links from "../resources/links";
 
-const Nav = styled.nav`
-  height: 9vh;
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(180deg, #fff, #cecece 20%, #aeaeae 80%, #cecece);
-`;
-
-const Img = styled.img`
-  height: 4rem;
-  margin-left: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-`;
-
-const NavLinksDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LinkDiv = styled.div`
-  height: auto;
-  width: 5rem;
-  display: flex;
-  align-items: center;
-`;
-
-const NavLinkStyled = styled(NavLink)`
-  height: 100%;
-  width: 5rem;
-  text-align: center;
-  vertical-align: baseline;
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
-`;
+import {
+  Nav,
+  Img,
+  NavLinksDiv,
+  LinkDiv,
+  NavLinkStyled,
+} from "../styles/navbar";
 
 function Navbar(props) {
   const mainLink = props.mainLink || links.main;
@@ -53,7 +22,9 @@ function Navbar(props) {
         {props.links?.map((el) => (
           <LinkDiv key={el.key} onClick={el?.onClick}>
             <NavLinkStyled
-              activeClassName={el.path === links.logout.path ? "" : "disabled"}
+              activeClassName={
+                el.path === links.logout.path ? "" : "disabled grey"
+              }
               to={el.path}
             >
               {el.name}

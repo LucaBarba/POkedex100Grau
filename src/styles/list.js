@@ -20,32 +20,6 @@ export const CardList = styled.div`
   justify-content: space-around;
 `;
 
-export const Card = styled.div`
-  flex-basis: 220px;
-  flex-shrink: 1;
-
-  margin: 2px;
-  padding: 10px;
-
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-
-  background-color: #7eca35;
-  border: 2px solid black;
-  border-radius: 5px;
-`;
-
-export const Name = styled.div`
-  text-align: center;
-`;
-
-export const FavButton = styled.button`
-  float: right;
-  width: fit-content;
-`;
-
 export const Button = styled.button`
   padding: 0rem 0.6rem;
 
@@ -56,5 +30,12 @@ export const Button = styled.button`
 
   border: none;
 
-  background-color: #408040;
+  background: linear-gradient(
+    180deg,
+    #cecece,
+    #60c060 15%,
+    #408040 50%,
+    #60c060 85%,
+    #cecece
+  );
 `;

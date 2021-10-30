@@ -10,6 +10,8 @@ import api from "../resources/api";
 
 import PokemonList from "../components/pokemonList";
 
+import config from "../config";
+
 function Main() {
   const { user } = useContext(UserContext);
   const [pokemonArray, setPokemonArray] = useState([]);
@@ -17,7 +19,11 @@ function Main() {
 
   useEffect(() => {
     setPokemonArray((pokemonArray) => {
-      if (page <= pokemonArray.length / 25) {
+      if (
+        page <= pokemonArray.length / config.apiPageSize ||
+        pokemonArray.length >= config.apiPokemonAmount
+      ) {
+        // Avoid adding pokemons to array twice
         return pokemonArray;
       }
 

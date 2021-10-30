@@ -15,12 +15,13 @@ const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.div`
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
-  padding: 15px 0px 15px 0px;
+  padding-bottom: 15px;
   text-align: center;
   width: 100%;
 `;
@@ -32,9 +33,13 @@ const InputDiv = styled.div`
 `;
 
 const TextInput = styled.input`
-  font-size: 2rem;
+  padding: 0.1rem;
+  font-size: 1.5rem;
   text-align: center;
-  border-radius: 15px;
+  border: solid;
+  border-width: 2px;
+  border-radius: 20px;
+  border-color: #5e5e5e;
 `;
 
 const Label = styled.label`
@@ -44,9 +49,15 @@ const Label = styled.label`
 `;
 
 const ButtonInput = styled.input`
-  margin: 20px 20px;
+  margin: 20px 0px;
   height: 2rem;
-  text-size
+  width: 30%;
+  border: none;
+  border-radius: 20px;
+  background-color: #5e5e5e;
+  color: #dedede;
+  box-shadow: 2px 2px 5px #555;
+  cursor: pointer;
 `;
 
 function Form(props) {

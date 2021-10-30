@@ -53,7 +53,7 @@ function Navbar(props) {
         {props.links?.map((el) => (
           <LinkDiv key={el.key} onClick={el?.onClick}>
             <NavLinkStyled
-              activeClassName={el.path == links.logout.path ? "" : "disabled"}
+              activeClassName={el.path === links.logout.path ? "" : "disabled"}
               to={el.path}
             >
               {el.name}

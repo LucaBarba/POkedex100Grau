@@ -20,19 +20,21 @@ const FormStyled = styled.form`
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
-  padding: 15px;
-  padding-top: 14px;
-  width: fit-content;
+  padding: 15px 0px 15px 0px;
+  text-align: center;
+  width: 100%;
 `;
 
 const InputDiv = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 15rem;
+  max-width: 20rem;
 `;
 
-const TextInput = styled(InputDiv)`
-  margin: 10px 0px;
+const TextInput = styled.input`
+  font-size: 2rem;
+  text-align: center;
+  border-radius: 15px;
 `;
 
 const Label = styled.label`
@@ -56,17 +58,17 @@ function Form(props) {
     <FormDiv>
       <FormStyled>
         <Title>{title}</Title>
-        <TextInput>
+        <InputDiv>
           <Label htmlFor="inputName">Nome do usuário</Label>
-          <input
+          <TextInput
             type="text"
             name="inputName"
             id="inputName"
             value={text}
             autoFocus
             onChange={(e) => setText(e.target.value)}
-          ></input>
-        </TextInput>
+          ></TextInput>
+        </InputDiv>
         <ButtonInput
           type="submit"
           name="inputSubmit"

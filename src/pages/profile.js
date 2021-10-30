@@ -15,15 +15,17 @@ function Profile() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const maxPage = Math.ceil(user.favorites.length / config.amountPerPage);
+    setPage((p) => {
+      const maxPage = Math.ceil(user.favorites.length / config.amountPerPage);
 
-    if (page > maxPage) {
-      // If favorite has been removed and the page is now off limits, go back
-      setPage(page - 1);
-    }
+      if (p > maxPage) {
+        // If favorite has been removed and the page is now off limits, go back
+        return p - 1;
+      }
+
+      return p;
+    });
   }, [user]);
-
-  //console.log(((user.favorites.length + 1) / config.amountPerPage) | 0);
 
   if (user === null) {
     return <Redirect to="/" />;

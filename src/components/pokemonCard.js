@@ -9,7 +9,7 @@ function PokemonCard({ pokemon }) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <Card key={pokemon.id}>
+    <Card>
       <img src={pokemon.image_url} alt={pokemon.name + " image"} />
       <Name>{capitalizeName(pokemon.name)}</Name>
 

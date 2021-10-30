@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const FormDiv = styled.div`
-  height: 100%;
+  height: 91vh;
   flex-grow: 1;
   display: flex;
   flex-direction: row;

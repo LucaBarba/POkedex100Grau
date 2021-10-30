@@ -16,19 +16,18 @@ function Main() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (page <= pokemonArray.length / 25) {
-      return;
-    }
+    setPokemonArray((pokemonArray) => {
+      if (page <= pokemonArray.length / 25) {
+        return pokemonArray;
+      }
 
-    api.get(`/pokemons?page=${page}`).then((res) => {
-      console.log(res);
+      api.get(`/pokemons?page=${page}`).then((res) => {
+        const pokemonCopy = pokemonArray.concat(res.data.data);
 
-      setPokemonArray((p) => {
-        console.log(p);
-        const shallow = p.concat(res.data.data);
-        console.log(shallow);
-        return shallow;
+        setPokemonArray(pokemonCopy);
       });
+
+      return pokemonArray;
     });
   }, [page]);
 

@@ -8,13 +8,9 @@ function PokemonList({ array, pageLimits, page, setPage }) {
   const start = (page - 1) * config.amountPerPage;
   const amount = config.amountPerPage;
   const curPageLimits = pageLimits || config.defaultPageLimits;
-  console.log(curPageLimits.lower);
-  console.log(curPageLimits.upper);
-  console.log(page);
 
   function buttonHandler(delta) {
     let nextPage = page + delta;
-    console.log(nextPage);
 
     if (nextPage < curPageLimits.lower) {
       nextPage = curPageLimits.lower;
@@ -38,8 +34,8 @@ function PokemonList({ array, pageLimits, page, setPage }) {
         {"<"}
       </Button>
       <CardList>
-        {array.slice(start, start + amount).map((pokemon, index) => (
-          <PokemonCard pokemon={pokemon} />
+        {array.slice(start, start + amount).map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </CardList>
       <Button

@@ -39,7 +39,7 @@ function Login() {
 
   return (
     <>
-      <Navbar links={[links.register]} />
+      <Navbar links={[links.register, links.login]} />
       <Form title="Fazer login" buttonText="Entrar" submitHook={handleSubmit} />
     </>
   );

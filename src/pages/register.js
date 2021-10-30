@@ -36,7 +36,7 @@ function Register() {
 
   return (
     <>
-      <Navbar links={[links.login]} />
+      <Navbar links={[links.register, links.login]} />
       <Form title="Criar conta" buttonText="Criar" submitHook={handleSubmit} />
     </>
   );

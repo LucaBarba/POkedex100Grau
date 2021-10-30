@@ -3,13 +3,18 @@ import api from "../resources/api";
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
 
+import { capitalizeName } from "../utils";
+
 import { Card, Name, FavButton } from "../styles/card";
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, setSelected }) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <Card className={pokemon.kind.split(";")[0]}>
+    <Card
+      onClick={() => setSelected(pokemon)}
+      className={pokemon.kind.split(";")[0]}
+    >
       <img src={pokemon.image_url} alt={pokemon.name + " image"} />
       <Name>{capitalizeName(pokemon.name)}</Name>
 
@@ -24,10 +29,6 @@ function PokemonCard({ pokemon }) {
       />
     </Card>
   );
-}
-
-function capitalizeName(name) {
-  return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 function favoritePosition(user, pokemon) {
@@ -49,6 +50,9 @@ function favoritePosition(user, pokemon) {
 }
 
 function handleFavoriteButton(event, user, setUser, pokemon) {
+  event.preventDefault();
+  event.stopPropagation();
+
   if (user === null) return;
 
   event.target.classList.add("disabled", "loading");

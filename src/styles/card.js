@@ -11,11 +11,11 @@ export const Card = styled.div`
 
   display: flex;
   flex-direction: column;
-
   justify-content: center;
 
-  border-radius: 5px;
+  cursor: pointer;
 
+  border-radius: 5px;
   box-shadow: 3px 3px black;
 `;
 

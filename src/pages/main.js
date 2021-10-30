@@ -16,8 +16,19 @@ function Main() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    api.get(`/pokemons?page=${page}`).then((response) => {
-      setPokemonArray(response.data.data);
+    if (page <= pokemonArray.length / 25) {
+      return;
+    }
+
+    api.get(`/pokemons?page=${page}`).then((res) => {
+      console.log(res);
+
+      setPokemonArray((p) => {
+        console.log(p);
+        const shallow = p.concat(res.data.data);
+        console.log(shallow);
+        return shallow;
+      });
     });
   }, [page]);
 
@@ -30,12 +41,7 @@ function Main() {
     <>
       <Navbar links={navLinks} />
 
-      <PokemonList
-        array={pokemonArray}
-        pageLimits={{ lower: 1, upper: 33 }}
-        page={page}
-        setPage={setPage}
-      />
+      <PokemonList array={pokemonArray} page={page} setPage={setPage} />
     </>
   );
 }

@@ -4,25 +4,35 @@ import PokemonCard from "./pokemonCard";
 
 import config from "../config";
 
-function PokemonList({ array, show, pageLimits, page, setPage }) {
-  const { start, amount } = show || { start: 0, amount: config.amountPerPage };
+function PokemonList({ array, pageLimits, page, setPage }) {
+  const start = (page - 1) * config.amountPerPage;
+  const amount = config.amountPerPage;
+  const curPageLimits = pageLimits || config.defaultPageLimits;
+  console.log(curPageLimits.lower);
+  console.log(curPageLimits.upper);
+  console.log(page);
 
   function buttonHandler(delta) {
     let nextPage = page + delta;
+    console.log(nextPage);
 
-    if (nextPage < pageLimits.lower) {
-      nextPage = pageLimits.lower;
-    } else if (nextPage > pageLimits.upper) {
-      nextPage = pageLimits.upper;
+    if (nextPage < curPageLimits.lower) {
+      nextPage = curPageLimits.lower;
+    } else if (nextPage > curPageLimits.upper) {
+      nextPage = curPageLimits.upper;
     }
 
     setPage(nextPage);
   }
 
+  const leftDisabled = page <= curPageLimits.lower;
+  const rightDisable = page >= curPageLimits.upper;
+
   return (
     <PokemonListDiv>
       <Button
-        disabled={page <= pageLimits.lower}
+        className={leftDisabled ? "page-nav-disabled" : ""}
+        disabled={leftDisabled}
         onClick={() => buttonHandler(-1)}
       >
         {"<"}
@@ -33,7 +43,8 @@ function PokemonList({ array, show, pageLimits, page, setPage }) {
         ))}
       </CardList>
       <Button
-        disabled={page >= pageLimits.upper}
+        className={rightDisable ? "page-nav-disabled" : ""}
+        disabled={rightDisable}
         onClick={() => buttonHandler(+1)}
       >
         {">"}

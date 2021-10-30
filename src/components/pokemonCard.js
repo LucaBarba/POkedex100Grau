@@ -3,7 +3,7 @@ import api from "../resources/api";
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
 
-import { Card } from "../styles/pokemonList";
+import { Card, Name, FavButton } from "../styles/pokemonList";
 
 function PokemonCard({ pokemon }) {
   const { user, setUser } = useContext(UserContext);
@@ -11,18 +11,16 @@ function PokemonCard({ pokemon }) {
   return (
     <Card key={pokemon.id}>
       <img src={pokemon.image_url} alt={pokemon.name + " image"} />
-      <div>
-        <div>{capitalizeName(pokemon.name)}</div>
-      </div>
+      <Name>{capitalizeName(pokemon.name)}</Name>
 
-      <button
+      <FavButton
         disabled={user === null}
         onClick={() => {
           handleFavoriteButton(user, setUser, pokemon);
         }}
       >
-        {verifyFavorite(user, pokemon) ? "Desfavoritar" : "Favoritar"}
-      </button>
+        {verifyFavorite(user, pokemon) ? "D" : "F"}
+      </FavButton>
     </Card>
   );
 }

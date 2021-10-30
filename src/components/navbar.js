@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import links from "../resources/links";
 
 const Nav = styled.nav`
-  height: auto;
+  height: 9vh;
   display: flex;
   justify-content: space-between;
   background: linear-gradient(180deg, #fff, #cecece 20%, #aeaeae 80%, #cecece);

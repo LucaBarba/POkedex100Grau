@@ -1,13 +1,12 @@
+import { useContext } from "react";
+import { Redirect } from "react-router";
+
 import Navbar from "../components/navbar";
+import PokemonList from "../components/pokemonList";
 
 import links from "../resources/links";
 
-import { useContext } from "react";
-
-import PokemonList from "../components/pokemonList";
-
 import UserContext from "../contexts/userContext";
-import { Redirect } from "react-router";
 
 function Profile() {
   const { user } = useContext(UserContext);

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Redirect } from "react-router";
 
 import Navbar from "../components/navbar";
 import Form from "../components/form";
@@ -9,12 +10,11 @@ import api from "../resources/api";
 import UserContext from "../contexts/userContext";
 
 import User from "../models/user";
-import { Redirect } from "react-router";
 
 function Login() {
   const { user, setUser } = useContext(UserContext);
 
-  function handleSubmit(e, formName, setFormText) {
+  function handleSubmit(e, formName, setErrorMessage) {
     e.preventDefault();
 
     api
@@ -29,7 +29,10 @@ function Login() {
         setUser(curUser);
       })
       .catch((error) => {
-        setFormText("");
+        if (error.response) {
+          setErrorMessage("Usuário não encontrado.");
+        }
+        console.dir(error);
       });
   }
 

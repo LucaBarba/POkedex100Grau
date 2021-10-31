@@ -14,7 +14,7 @@ import User from "../models/user";
 function Register() {
   const { user, setUser } = useContext(UserContext);
 
-  function handleSubmit(e, name, setName) {
+  function handleSubmit(e, name, setErrorMessage) {
     e.preventDefault();
     api
       .post("/users", { username: name })
@@ -24,7 +24,9 @@ function Register() {
         setUser(newUser);
       })
       .catch((error) => {
-        setName("");
+        if (error.response) {
+          setErrorMessage("Usuário já existe!");
+        }
         console.error("Failed to register");
       });
   }

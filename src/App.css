@@ -12,6 +12,15 @@
   background: none !important;
 }
 
+.error {
+  color: #aa0000 !important;
+  border: 2px solid #ff0000 !important;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
 .page-grey {
   background: var(--bg) !important;
   color: var(--bg) !important;

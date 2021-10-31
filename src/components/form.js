@@ -5,15 +5,15 @@ import {
   InputDiv,
   TextInput,
   Label,
+  ErrorMessage,
   ButtonInput,
 } from "../styles/form";
 
 import { useState } from "react";
 
-function Form(props) {
-  const { title, buttonText, submitHook } = props;
-
+function Form({ title, buttonText, submitHook }) {
   const [text, setText] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   return (
     <FormDiv>
@@ -27,15 +27,22 @@ function Form(props) {
             id="inputName"
             value={text}
             autoFocus
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => {
+              setText(e.target.value);
+              setErrorMessage(null);
+            }}
+            className={errorMessage ? "error" : ""}
           ></TextInput>
         </InputDiv>
+        <ErrorMessage className={errorMessage ? "visible" : ""}>
+          {errorMessage || "placeholder"}
+        </ErrorMessage>
         <ButtonInput
           type="submit"
           name="inputSubmit"
           id="inputSubmit"
           value={buttonText}
-          onClick={(e) => submitHook(e, text, setText)}
+          onClick={(e) => submitHook(e, text, setErrorMessage)}
         />
       </FormStyled>
     </FormDiv>

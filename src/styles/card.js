@@ -16,11 +16,12 @@ export const Card = styled.div`
   cursor: pointer;
 
   border-radius: 5px;
-  box-shadow: 3px 3px black;
+  box-shadow: 3px 3px 4px black;
 `;
 
 export const Name = styled.div`
   text-align: center;
+  font-weight: bold;
 `;
 
 export const FavButton = styled.button`

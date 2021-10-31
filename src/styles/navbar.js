@@ -39,5 +39,5 @@ export const NavLinkStyled = styled(NavLink)`
   vertical-align: baseline;
   text-decoration: none;
   font-weight: bold;
-  color: #eeeeee;
+  color: var(--white-text);
 `;

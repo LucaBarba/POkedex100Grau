@@ -7,8 +7,16 @@ import links from "../resources/links";
 
 const setProfileText = (user) => (links.profile.name = user?.username);
 
+const parseFromStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user@pokedex"));
+  } catch (e) {
+    return null;
+  }
+};
+
 const useUser = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user@pokedex"));
+  const storedUser = parseFromStorage();
 
   const [user, setUser] = useState(storedUser);
 
@@ -25,7 +33,7 @@ const useUser = () => {
   };
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user@pokedex"));
+    const storedUser = parseFromStorage();
 
     if (storedUser != null) {
       api.get(`/users/${storedUser.username}`).then((res) => {

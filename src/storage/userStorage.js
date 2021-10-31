@@ -20,18 +20,6 @@ const useUser = () => {
 
   const [user, setUser] = useState(storedUser);
 
-  // atualiza usuário no localStorage e no react
-  const storeAndSetUser = (u) => {
-    try {
-      localStorage.setItem("user@pokedex", JSON.stringify(u));
-
-      // Quando usuário é atualizado, atualiza o link para o perfil
-      setProfileText(u);
-
-      setUser(u);
-    } catch (error) {}
-  };
-
   useEffect(() => {
     const storedUser = parseFromStorage();
 
@@ -43,10 +31,19 @@ const useUser = () => {
           res.data.pokemons
         );
 
-        storeAndSetUser(curUser);
+        setUser(curUser);
       });
     }
   }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("user@pokedex", JSON.stringify(user));
+
+      // Quando usuário é atualizado, atualiza o link para o perfil
+      setProfileText(user);
+    } catch (error) {}
+  }, [user]);
 
   // Muda link do perfil para refletir o usuário salvo no localStorage
   setProfileText(user);
@@ -55,10 +52,10 @@ const useUser = () => {
   links.logout.onClick = (e) => {
     e.preventDefault();
 
-    storeAndSetUser(null);
+    setUser(null);
   };
 
-  return [user, storeAndSetUser];
+  return [user, setUser];
 };
 
 export default useUser;

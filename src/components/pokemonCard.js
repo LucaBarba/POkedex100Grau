@@ -62,28 +62,32 @@ function handleFavoriteButton(event, user, setUser, pokemon) {
   if (favPosition !== -1) {
     api
       .delete(`/users/${user.username}/starred/${pokemon.name}`)
-      .then((_res) => {
-        let newUser = { ...user };
+      .then((_res) =>
+        setUser((oldUser) => {
+          let newUser = { ...oldUser };
 
-        newUser.favorites = user.favorites.slice(0);
-        newUser.favorites.splice(favPosition, 1);
+          newUser.favorites = oldUser.favorites.slice(0);
+          newUser.favorites.splice(favoritePosition(oldUser, pokemon), 1);
 
-        setUser(newUser);
-      })
+          return newUser;
+        })
+      )
       .finally(() => {
         event.target.classList.remove("disabled", "loading");
       });
   } else {
     api
       .post(`/users/${user.username}/starred/${pokemon.name}`)
-      .then((_res) => {
-        let newUser = { ...user };
+      .then((_res) =>
+        setUser((oldUser) => {
+          let newUser = { ...oldUser };
 
-        newUser.favorites = user.favorites.slice(0);
-        newUser.favorites.push(pokemon);
+          newUser.favorites = oldUser.favorites.slice(0);
+          newUser.favorites.push(pokemon);
 
-        setUser(newUser);
-      })
+          return newUser;
+        })
+      )
       .finally(() => {
         event.target.classList.remove("disabled", "loading");
       });

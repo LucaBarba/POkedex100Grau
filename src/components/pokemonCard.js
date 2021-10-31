@@ -10,6 +10,14 @@ import { Card, Name, FavButton } from "../styles/card";
 function PokemonCard({ pokemon, setSelected }) {
   const { user, setUser } = useContext(UserContext);
 
+  let cardClasses = "";
+
+  if (!user) {
+    cardClasses += "disabled hidden";
+  } else if (favoritePosition(user, pokemon) !== -1) {
+    cardClasses += " icon-favorited";
+  }
+
   return (
     <Card
       onClick={() => setSelected(pokemon)}
@@ -19,9 +27,7 @@ function PokemonCard({ pokemon, setSelected }) {
       <Name>{capitalizeName(pokemon.name)}</Name>
 
       <FavButton
-        className={
-          favoritePosition(user, pokemon) !== -1 ? " icon-favorited" : ""
-        }
+        className={cardClasses}
         disabled={user === null}
         onClick={(event) => {
           handleFavoriteButton(event, user, setUser, pokemon);

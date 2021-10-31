@@ -19,24 +19,23 @@ export const Img = styled.img`
 `;
 
 export const NavLinksDiv = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
 `;
 
 export const LinkDiv = styled.div`
-  height: auto;
+  padding: auto;
   width: 5rem;
   display: flex;
   align-items: center;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  height: 100%;
+  padding: auto;
   width: 5rem;
   text-align: center;
-  vertical-align: baseline;
   text-decoration: none;
   font-weight: bold;
   color: var(--white-text);

@@ -27,7 +27,7 @@ export const NavLinksDiv = styled.div`
 
 export const NavLinkStyled = styled(NavLink)`
   height: 100%;
-  width: 5rem;
+  min-width: 5rem;
 
   display: flex;
   flex-direction: column;
@@ -36,6 +36,7 @@ export const NavLinkStyled = styled(NavLink)`
   text-align: center;
   text-decoration: none;
   font-weight: bold;
+
   color: var(--white-text);
 
   background-color: #00000030;

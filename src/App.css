@@ -7,8 +7,9 @@
   pointer-events: none;
 }
 
-.grey {
+.nav-grey {
   color: grey !important;
+  background: none !important;
 }
 
 .page-grey {

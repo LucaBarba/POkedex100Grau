@@ -25,18 +25,18 @@ export const NavLinksDiv = styled.div`
   align-items: stretch;
 `;
 
-export const LinkDiv = styled.div`
-  padding: auto;
-  width: 5rem;
-  display: flex;
-  align-items: center;
-`;
-
 export const NavLinkStyled = styled(NavLink)`
-  padding: auto;
+  height: 100%;
   width: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   text-align: center;
   text-decoration: none;
   font-weight: bold;
   color: var(--white-text);
+
+  background-color: #00000030;
 `;
